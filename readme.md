@@ -3,11 +3,6 @@
 </div>
 <div align="center">
 
-[![Build]][build_url]
-[![Version]][tag_url]
-[![Size]][tag_url]
-[![Package]][pkg_url]
-[![Pulls]][hub_url]
 
 </div></h1>
 
@@ -20,7 +15,7 @@ Via Docker Compose:
 ```yaml
 services:
   dnsmasq:
-    image: dockurr/dnsmasq
+    build: .
     container_name: dnsmasq
     environment:
       DNS: "1.0.0.1"
@@ -34,6 +29,7 @@ services:
 Via Docker CLI:
 
 ```bash
-docker run -it --rm -p 53:53/udp -p 53:53/tcp -e "DNS=1.0.0.1" --cap-add=NET_ADMIN dockurr/dnsmasq
+docker build -t dnsmasq-unbound .
+docker run -it --rm -p 53:53/udp -p 53:53/tcp -e "DNS=1.0.0.1" --cap-add=NET_ADMIN dnsmasq-unbound
 ```
 
